@@ -156,7 +156,7 @@ function ajaxUserInfo(){
 		return;
 	}
 	$.ajax({
-		url:"/student/post/stuClass",
+		url:"/student/search",
 		type:"POST", //GET
 		async:true,    //或false,是否异步
 		data:{
@@ -175,7 +175,7 @@ function ajaxUserInfo(){
 //ajax请求学院数据
 function ajaxAcademy(){
 	$.ajax({
-		url:"/academy/get",
+		url:"/academy/list",
 		type:"GET", //GET
 		async:true,    //或false,是否异步
 		data:{
@@ -194,7 +194,7 @@ function ajaxAcademy(){
 //ajax根据学院id查询专业
 function ajaxMajor(academyId){
     $.ajax({
-        url:"/major/get",
+        url:"/major/search",
         type:"POST", //GET
         async:true,    //或false,是否异步
         data:{
@@ -213,7 +213,7 @@ function ajaxMajor(academyId){
 //ajax根据专业id查询班级
 function ajaxClasses(majorId){
     $.ajax({
-        url:"/classes/get",
+        url:"/classes/search",
         type:"POST", //GET
         async:true,    //或false,是否异步
         data:{

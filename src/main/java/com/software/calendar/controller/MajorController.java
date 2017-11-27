@@ -7,6 +7,7 @@ import com.software.calendar.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class MajorController {
     MajorRepository majorRepo;
 
     /*根据学院id查询专业*/
-    @RequestMapping(value = "/get",method = RequestMethod.POST)
-    public Result<Major> get(String academyId) {
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
+    public Result<Major> search(@RequestParam String academyId) {
         System.out.println("******根据学院id查询专业******");
         List<Major> list = majorRepo.findByAcademyId(academyId);
         System.out.println("总共查询到：" + list.size() + "条数据");

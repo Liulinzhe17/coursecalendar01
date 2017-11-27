@@ -66,7 +66,11 @@ public class teacherController {
         System.out.println("******批量删除教师******");
         //根据teacherUserid查询到要删除的列
         for (String teacherUserid : teacherUseridArray){
-            teacherRepo.delete(teacherUserid);
+            try{
+                teacherRepo.delete(teacherUserid);
+            }catch (Exception e){
+                return ResultUtil.error(400,"教师id不存在");
+            }
         }
         return ResultUtil.success();
     }
@@ -74,7 +78,7 @@ public class teacherController {
     /*修改一个用户*/
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
-    public Result update(teacher tea){
+    public Result update(@RequestBody teacher tea){
         System.out.println("******更新教师******");
         teacherRepo.saveAndFlush(tea);
         return ResultUtil.success();

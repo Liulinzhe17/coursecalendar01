@@ -17,8 +17,8 @@ public class AcademyController {
     AcademyRepository academyRepo;
 
     /*查询所有学院*/
-    @RequestMapping("/get")
-    public Result<Academy> get() {
+    @RequestMapping("/list")
+    public Result<Academy> list() {
         System.out.println("******查询学院******");
         List<Academy> list = academyRepo.findAll();
         System.out.println("总共查询到：" + list.size() + "条数据");

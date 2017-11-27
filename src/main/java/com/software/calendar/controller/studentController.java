@@ -20,8 +20,8 @@ public class studentController {
     studentRepository studentRepo;
 
     /*查询所有用户*/
-    @RequestMapping("/get")
-    public Result<student> get() {
+    @RequestMapping("/list")
+    public Result<student> list() {
         System.out.println("******查询所有学生******");
         List<student> list = studentRepo.findAll();
         System.out.println("总共查询到：" + list.size() + "条数据");
@@ -30,12 +30,11 @@ public class studentController {
     }
 
     /*根据班级id查询学生*/
-    @RequestMapping(value = "/post/stuClass",method = RequestMethod.POST)
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
     @ResponseBody
-    public Result postStuClass(String stuClass){
+    public Result search(@RequestParam String stuClass){
         System.out.println("******根据班级id查询学生******");
         List<student> list = studentRepo.findByStuClass(stuClass);
-        System.out.println(stuClass);
         System.out.println("总共查询到：" + list.size() + "条数据");
         return ResultUtil.success(list);
     }
@@ -43,7 +42,7 @@ public class studentController {
     /*增加一个用户*/
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
-    public Result add(student stu){
+    public Result add(@RequestBody student stu){
         System.out.println("******新增学生******");
         studentRepo.save(stu);
         return ResultUtil.success();
@@ -52,7 +51,7 @@ public class studentController {
     /*批量增加用户*/
     @RequestMapping(value = "/adds",method = RequestMethod.POST)
     @ResponseBody
-    public Result adds(student[] stuArray){
+    public Result adds(@RequestBody student[] stuArray){
         System.out.println("******批量新增学生******");
         for (int i=0;i<stuArray.length;i++){
             studentRepo.save(stuArray[i]);
@@ -63,7 +62,7 @@ public class studentController {
     /*删除一个用户*/
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     @ResponseBody
-    public Result delete(String stuUserid){
+    public Result delete(@RequestParam String stuUserid){
         System.out.println("******删除学生******");
         //根据stuUserid查询到要删除的列
         studentRepo.delete(stuUserid);
@@ -74,7 +73,7 @@ public class studentController {
     /*批量删除用户*/
     @RequestMapping(value = "/deletes",method = RequestMethod.POST)
     @ResponseBody
-    public Result deletes(String[] stuUseridArray){
+    public Result deletes(@RequestBody String[] stuUseridArray){
         System.out.println("******批量删除学生******");
         //根据stuUserid查询到要删除的列
         for (String stuUserid : stuUseridArray){
@@ -86,7 +85,7 @@ public class studentController {
     /*修改一个用户*/
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
-    public Result update(student stu){
+    public Result update(@RequestBody student stu){
         System.out.println("******更新学生******");
         studentRepo.saveAndFlush(stu);
         return ResultUtil.success();
