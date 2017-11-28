@@ -1,11 +1,10 @@
 package com.software.calendar.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-public class student {
+public class student{
 
     @Id
     private String stuUserid;
@@ -16,15 +15,30 @@ public class student {
     private String stuPhonenum;
     private Integer stuPermission;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "scourse", joinColumns = {
+            @JoinColumn(name = "stuUserid", referencedColumnName = "stuUserid") }, inverseJoinColumns = {
+            @JoinColumn(name = "courseId", referencedColumnName = "courseId") })
+    private Set<course>courses;
+
+    public student(){
+
+    }
+
+    public Set<course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<course> courses) {
+        this.courses = courses;
+    }
+
     public Integer getStuPermission() {
         return stuPermission;
     }
 
     public void setStuPermission(Integer stuPermission) {
         this.stuPermission = stuPermission;
-    }
-
-    public student(){
     }
 
     public String getStuUserid() {
