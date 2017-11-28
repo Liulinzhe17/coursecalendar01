@@ -5,6 +5,9 @@ import com.software.calendar.bean.student;
 import com.software.calendar.repository.studentRepository;
 import com.software.calendar.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
@@ -27,6 +30,17 @@ public class studentController {
         System.out.println("总共查询到：" + list.size() + "条数据");
         return ResultUtil.success(list);
 
+    }
+
+    /*分页查询*/
+    @RequestMapping(value = "/listPage",method = RequestMethod.POST)
+    @ResponseBody
+    public Result<student>listPage(@RequestParam int pageNum ,int pageSize){
+        System.out.println("******分页查询******");
+        Pageable pageable=new PageRequest(pageNum,pageSize);
+        Page<student> page = studentRepo.findAll(pageable);
+        System.out.println("本页总共有：" + page.getNumberOfElements() + "条数据");
+        return ResultUtil.success(page);
     }
 
     /*根据班级id查询学生*/

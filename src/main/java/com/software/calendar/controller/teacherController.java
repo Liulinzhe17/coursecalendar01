@@ -7,6 +7,9 @@ import com.software.calendar.controller.teacherController;
 import com.software.calendar.repository.teacherRepository;
 import com.software.calendar.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +21,8 @@ public class teacherController {
     teacherRepository teacherRepo;
 
     /*查询所有用户*/
-    @RequestMapping("/get")
-    public Result<teacher> get() {
+    @RequestMapping("/list")
+    public Result<teacher> list() {
         System.out.println("******查询所有教师******");
         List<teacher> list = teacherRepo.findAll();
         System.out.println("总共查询到：" + list.size() + "条数据");
@@ -27,6 +30,16 @@ public class teacherController {
 
     }
 
+    /*分页查询*/
+    @RequestMapping(value = "/listPage",method = RequestMethod.POST)
+    @ResponseBody
+    public Result<teacher>listPage(@RequestParam int pageNum ,int pageSize){
+        System.out.println("******分页查询******");
+        Pageable pageable=new PageRequest(pageNum,pageSize);
+        Page<teacher> page = teacherRepo.findAll(pageable);
+        System.out.println("本页总共有：" + page.getNumberOfElements() + "条数据");
+        return ResultUtil.success(page);
+    }
 
     /*增加一个用户*/
     @RequestMapping(value = "/add",method = RequestMethod.POST)
