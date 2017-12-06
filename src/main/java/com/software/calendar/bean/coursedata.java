@@ -43,6 +43,21 @@ public class coursedata {
         this.courseWeek = courseWeek;
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public String toString() {
+        return "coursedata{" +
+                "courseId='" + courseId + '\'' +
+                ", courseWeektime=" + courseWeektime +
+                ", courseWeek=" + courseWeek +
+                ", courseHomework='" + courseHomework + '\'' +
+                ", courseOutline='" + courseOutline + '\'' +
+                ", courseData='" + courseData + '\'' +
+                '}';
+    }
+
+>>>>>>> cx
     public String getCourseHomework() {
         return courseHomework;
     }

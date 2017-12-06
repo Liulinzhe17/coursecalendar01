@@ -14,6 +14,23 @@ $.ajax({
         $('#weeknum').html(txt);
     }
 })
+<<<<<<< HEAD
+=======
+$.ajax({
+    type:"post",
+    url:"/course/findcourse",
+    data:{cid:"84527"},
+    success:function (data) {
+        var name=data.courseName;
+        var address=data.courseAddress;
+        var na="课程名："+name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"教学地点："+address;
+        $("#class_header").html(na);
+    },
+    error:function(data){
+        alert(data.status);
+    }
+})
+>>>>>>> cx
 sub.onclick=function(){
     var content=document.getElementById("con").value;
     $.ajax({
@@ -21,7 +38,10 @@ sub.onclick=function(){
         url:"/course/updatec_outline",
         data:{cid:"84527",con:content,week:cweek},
         success:function (data) {
+<<<<<<< HEAD
             alert("123");
+=======
+>>>>>>> cx
             $('#sk').html(content);
         },
         error:function(data){
@@ -36,7 +56,10 @@ sub1.onclick=function(){
         url:"/course/updatec_homework",
         data:{cid:"84527",con:content,week:cweek},
         success:function (data) {
+<<<<<<< HEAD
             alert("123");
+=======
+>>>>>>> cx
             $('#zy').html(content);
         },
         error:function(data){
@@ -57,7 +80,14 @@ window.onload = function () {
                     success:function(data) {
                         cweek=week[1];
                         $('#sk').html(data.courseOutline);
+<<<<<<< HEAD
                         $('#zl').html(data.courseData);
+=======
+                        var cd=data.courseData;
+                        var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
+                        cd = cd.replace(reg, "<a href='$1$2' target=\"_blank\">$1$2</a>").replace(/\n/g, "<br />");
+                        $('#zl').html(cd);
+>>>>>>> cx
                         $('#zy').html(data.courseHomework);
                     }
                 })

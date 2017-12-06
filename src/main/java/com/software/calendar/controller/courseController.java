@@ -21,20 +21,42 @@ public class courseController {
     coursedataRepository coursedataRepo;
 
     @RequestMapping(value="/findweek",method = RequestMethod.POST)
+<<<<<<< HEAD
     public String Findweek(String id){
+=======
+    public String Findweek(String id){//这里的参数名要和ajax传过来的对应
+>>>>>>> cx
         course c = courseRepo.findByCourseId(id);
         int start = c.getCourseWeekstart();
         int end = c.getCourseWeekend();
         return start+"-"+end;
     }
+<<<<<<< HEAD
 
     @RequestMapping(value="/finddata",method=RequestMethod.POST)
     public coursedata Findcdata(String cid,String week){
+=======
+    @RequestMapping(value="/findcourse",method = RequestMethod.POST)
+    public course Findhea(String cid){
+        course c = courseRepo.findByCourseId(cid);
+        return c;
+    }
+    @RequestMapping(value="/finddata",method=RequestMethod.POST)
+    public coursedata Finddata(String cid,String week){
+>>>>>>> cx
         int we = Integer.parseInt(week);
         coursedata cd = coursedataRepo.findByCourseIdAndCourseWeektime(cid,we);
         return cd;
     }
+<<<<<<< HEAD
 
+=======
+//    @RequestMapping(value="/findteacher",method=RequestMethod.POST)
+//    public coursedata Findteacher(String cid){
+////        coursedata cd = coursedataRepo.findByCourseIdAndCourseWeektime(cid);
+//        return cd;
+//    }
+>>>>>>> cx
 
     @RequestMapping(value="/updatec_outline",method=RequestMethod.POST)
     public int Updatec_outline(String cid,String con,String week){
@@ -42,8 +64,12 @@ public class courseController {
         coursedata cd = coursedataRepo.findByCourseIdAndCourseWeektime(cid,we);
         System.out.println(cd.toString());
 //        cd.setCourseOutline(con);
+<<<<<<< HEAD
         coursedataRepo.saveAndFlush(cd);
 
+=======
+//        int s=coursedataRepo.savebycidandweektime(con,cid,we);
+>>>>>>> cx
         return 1;
     }
 
@@ -53,8 +79,11 @@ public class courseController {
         coursedata cd = coursedataRepo.findByCourseIdAndCourseWeektime(cid,we);
         System.out.println(cd.toString());
 //        cd.setCourseHomework(con);
+<<<<<<< HEAD
         coursedataRepo.saveAndFlush(cd);
 
+=======
+>>>>>>> cx
         return 1;
     }
 }

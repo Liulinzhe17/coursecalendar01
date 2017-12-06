@@ -1,7 +1,10 @@
 package com.software.calendar.controller;
 
 import com.software.calendar.bean.Result;
+<<<<<<< HEAD
 import com.software.calendar.bean.course;
+=======
+>>>>>>> cx
 import com.software.calendar.bean.student;
 import com.software.calendar.repository.studentRepository;
 import com.software.calendar.util.ResultUtil;
@@ -13,7 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Arrays;
+=======
+>>>>>>> cx
 import java.util.List;
 
 @RestController
@@ -107,6 +113,7 @@ public class studentController {
         return ResultUtil.success();
     }
 
+<<<<<<< HEAD
     /*判断一个用户空闲状态*/
     @RequestMapping(value = "/isFree",method = RequestMethod.POST)
     @ResponseBody
@@ -163,6 +170,8 @@ public class studentController {
         return ResultUtil.success(status);
     }
 
+=======
+>>>>>>> cx
     @RequestMapping(value="/login",method = RequestMethod.POST)
     public Integer IsLogin(String id,String pwd){
         student s =studentRepo.findByStuUseridAndStuPassword(id,pwd);

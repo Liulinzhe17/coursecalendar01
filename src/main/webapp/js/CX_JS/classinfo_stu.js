@@ -13,6 +13,37 @@ $.ajax({
         $('#weeknum').html(txt);
     }
 })
+<<<<<<< HEAD
+=======
+$.ajax({
+    type:"post",
+    url:"/course/findcourse",
+    data:{cid:"84527"},
+    success:function (data) {
+        var name=data.courseName;
+        var address=data.courseAddress;
+        var na="课程名："+name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"教学地点："+address;
+        $("#class_header").html(na);
+    },
+    error:function(data){
+        alert(data.status);
+    }
+})
+$.ajax({
+    type:"post",
+    url:"/course/findteacher",
+    data:{cid:"84527"},
+    success:function (data) {
+        var name=data.courseName;
+        var address=data.courseAddress;
+        var na="课程名："+name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"教学地点："+address;
+        $("#class_header").html(na);
+    },
+    error:function(data){
+        alert(data.status);
+    }
+})
+>>>>>>> cx
 window.onload = function () {
     window.setTimeout(function () {
         var s=$(".weeknumber");
