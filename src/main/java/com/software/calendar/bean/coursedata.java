@@ -43,8 +43,6 @@ public class coursedata {
         this.courseWeek = courseWeek;
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public String toString() {
         return "coursedata{" +
@@ -57,7 +55,6 @@ public class coursedata {
                 '}';
     }
 
->>>>>>> cx
     public String getCourseHomework() {
         return courseHomework;
     }

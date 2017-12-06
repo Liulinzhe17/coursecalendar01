@@ -1,7 +1,8 @@
 package com.software.calendar.bean;
 
 
-<<<<<<< HEAD
+import javax.persistence.ManyToMany;
+import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Id;
@@ -12,22 +13,10 @@ import java.util.Set;
 
 @Entity
 public class course{
-=======
-import javax.persistence.Id;
 
-import javax.persistence.Entity;
-
-@Entity
-public class course {
->>>>>>> cx
 
     @Id
     private String courseId;
-
-<<<<<<< HEAD
-=======
-
->>>>>>> cx
     private String courseName;
     private Integer courseTimestart;
     private Integer courseTimeend;
@@ -37,12 +26,10 @@ public class course {
     private Integer courseWeekstart;
     private Integer courseWeekend;
 
-<<<<<<< HEAD
-    @ManyToMany(mappedBy = "courses")
-    private Set<student>students;
 
-=======
->>>>>>> cx
+    @ManyToMany(mappedBy = "courses")
+    private Set<student> students;
+
     public course(){
 
     }
@@ -133,7 +120,6 @@ public class course {
     public void setCourseWeekend(Integer courseWeekend) {
         this.courseWeekend = courseWeekend;
     }
-<<<<<<< HEAD
 
     @JsonIgnore
     public Set<student> getStudents() {
@@ -143,6 +129,5 @@ public class course {
     public void setStudents(Set<student> students) {
         this.students = students;
     }
-=======
->>>>>>> cx
+
 }
