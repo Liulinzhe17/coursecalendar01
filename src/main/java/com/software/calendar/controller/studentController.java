@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/student")
+@RequestMapping(value="/students")
 public class studentController {
 
 
@@ -24,7 +24,7 @@ public class studentController {
     studentRepository studentRepo;
 
     /*查询所有用户*/
-    @RequestMapping("/list")
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public Result<student> list() {
         System.out.println("******查询所有学生******");
         List<student> list = studentRepo.findAll();
@@ -34,7 +34,7 @@ public class studentController {
     }
 
     /*分页查询*/
-    @RequestMapping(value = "/listPage",method = RequestMethod.POST)
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
     @ResponseBody
     public Result<student>listPage(@RequestParam int pageNum ,int pageSize){
         System.out.println("******分页查询******");
@@ -45,9 +45,9 @@ public class studentController {
     }
 
     /*根据班级id查询学生*/
-    @RequestMapping(value = "/search",method = RequestMethod.POST)
+    @RequestMapping(value = "/{stuClass}",method = RequestMethod.GET)
     @ResponseBody
-    public Result search(@RequestParam String stuClass){
+    public Result search(@PathVariable("stuClass") String stuClass){
         System.out.println("******根据班级id查询学生******");
         List<student> list = studentRepo.findByStuClass(stuClass);
         System.out.println("总共查询到：" + list.size() + "条数据");
@@ -55,16 +55,16 @@ public class studentController {
     }
 
     /*增加一个用户*/
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/{stuUserid}",method = RequestMethod.POST)
     @ResponseBody
-    public Result add(@RequestBody student stu){
+    public Result add(@PathVariable("stuUserid")String stuUserid,@RequestBody student stu){
         System.out.println("******新增学生******");
         studentRepo.save(stu);
         return ResultUtil.success();
     }
 
     /*批量增加用户*/
-    @RequestMapping(value = "/adds",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public Result adds(@RequestBody student[] stuArray){
         System.out.println("******批量新增学生******");
@@ -75,9 +75,9 @@ public class studentController {
     }
 
     /*删除一个用户*/
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/{stuUserid}",method = RequestMethod.DELETE)
     @ResponseBody
-    public Result delete(@RequestParam String stuUserid){
+    public Result delete(@PathVariable("stuUserid")String stuUserid){
         System.out.println("******删除学生******");
         //根据stuUserid查询到要删除的列
         studentRepo.delete(stuUserid);
@@ -86,7 +86,7 @@ public class studentController {
     }
 
     /*批量删除用户*/
-    @RequestMapping(value = "/deletes",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.DELETE)
     @ResponseBody
     public Result deletes(@RequestBody String[] stuUseridArray){
         System.out.println("******批量删除学生******");
@@ -98,18 +98,18 @@ public class studentController {
     }
 
     /*修改一个用户*/
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "{stuUserid}",method = RequestMethod.PUT)
     @ResponseBody
-    public Result update(@RequestBody student stu){
+    public Result update(@PathVariable("stuUserid")String stuUserid, @RequestBody student stu){
         System.out.println("******更新学生******");
         studentRepo.saveAndFlush(stu);
         return ResultUtil.success();
     }
 
     /*判断一个用户空闲状态*/
-    @RequestMapping(value = "/isFree",method = RequestMethod.POST)
+    @RequestMapping(value = "/{stuUserid}/status",method = RequestMethod.GET)
     @ResponseBody
-    public Result isFree(@RequestParam String stuUserid ,int weekday ,int start ,int end ,int week){
+    public Result isFree(@PathVariable("stuUserid")String stuUserid,@RequestParam int weekday ,int start ,int end ,int week){
         System.out.println("******判断学生的空闲状态******");
         
         int status=1;//status=1表示有空，status=0表示没空。

@@ -155,12 +155,13 @@ function ajaxUserInfo(){
 		alert("筛选条件不正确！");
 		return;
 	}
+	var url='/students/'+$("select").eq(6).val();
 	$.ajax({
-		url:"/student/search",
-		type:"POST", //GET
+		url:url,
+		type:"GET", //GET
 		async:true,    //或false,是否异步
 		data:{
-			stuClass:$("select").eq(6).val()
+			// stuClass:$("select").eq(6).val()
 		},
 		timeout:5000,    //超时时间
 		dataType:"json",    //返回的数据格式：json/xml/html/script/jsonp/text
@@ -168,14 +169,14 @@ function ajaxUserInfo(){
 			updateStudent(data);
 		},
         error:function(data){
-            alert("error:"+data.status)
+            // alert("getStudentsError:"+data.status)
         },
 	})
 }
 //ajax请求学院数据
 function ajaxAcademy(){
 	$.ajax({
-		url:"/academy/list",
+		url:"/academys",
 		type:"GET", //GET
 		async:true,    //或false,是否异步
 		data:{
@@ -187,18 +188,19 @@ function ajaxAcademy(){
 			updateAcademy(data);
 		},
 		error:function(data){
-            alert("error:"+data.status)
+            // alert("getAcademysError:"+data.status)
 		},
 	})
 }
 //ajax根据学院id查询专业
 function ajaxMajor(academyId){
+	var url='/majors/'+academyId;
     $.ajax({
-        url:"/major/search",
-        type:"POST", //GET
+        url:url,
+        type:"GET", //GET
         async:true,    //或false,是否异步
         data:{
-        	academyId:academyId
+        	// academyId:academyId
         },
         timeout:5000,    //超时时间
         dataType:"json",    //返回的数据格式：json/xml/html/script/jsonp/text
@@ -206,18 +208,19 @@ function ajaxMajor(academyId){
             updateMajor(data);
         },
         error:function(data){
-            alert("error:"+data.status)
+            // alert("getMajorsError:"+data.status)
         },
     })
 }
 //ajax根据专业id查询班级
 function ajaxClasses(majorId){
+	var url ='/classes/'+majorId;
     $.ajax({
-        url:"/classes/search",
-        type:"POST", //GET
+        url:url,
+        type:"GET", //GET
         async:true,    //或false,是否异步
         data:{
-            majorId:majorId
+            // majorId:majorId
         },
         timeout:5000,    //超时时间
         dataType:"json",    //返回的数据格式：json/xml/html/script/jsonp/text
@@ -225,7 +228,7 @@ function ajaxClasses(majorId){
             updateClasses(data);
         },
         error:function(data){
-            alert("error:"+data.status)
+            // alert("getClassesError:"+data.status)
         },
     })
 }

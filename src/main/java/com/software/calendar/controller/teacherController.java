@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/teacher")
+@RequestMapping("/teachers")
 public class teacherController {
     @Autowired
     teacherRepository teacherRepo;
 
     /*查询所有用户*/
-    @RequestMapping("/list")
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public Result<teacher> list() {
         System.out.println("******查询所有教师******");
         List<teacher> list = teacherRepo.findAll();
@@ -31,7 +31,7 @@ public class teacherController {
     }
 
     /*分页查询*/
-    @RequestMapping(value = "/listPage",method = RequestMethod.POST)
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
     @ResponseBody
     public Result<teacher>listPage(@RequestParam int pageNum ,int pageSize){
         System.out.println("******分页查询******");
@@ -42,16 +42,16 @@ public class teacherController {
     }
 
     /*增加一个用户*/
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/{teacherUserid}",method = RequestMethod.POST)
     @ResponseBody
-    public Result add(@RequestBody teacher tea){
+    public Result add(@PathVariable("teacherUserid")String teacherUserid,@RequestBody teacher tea){
         System.out.println("******新增教师******");
         teacherRepo.save(tea);
         return ResultUtil.success();
     }
 
     /*批量增加用户*/
-    @RequestMapping(value = "/adds",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public Result adds(@RequestBody teacher[] teaArray){
         System.out.println("******批量新增教师******");
@@ -62,9 +62,9 @@ public class teacherController {
     }
 
     /*删除一个用户*/
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/{teacherUserid}",method = RequestMethod.DELETE)
     @ResponseBody
-    public Result delete(@RequestParam String teacherUserid){
+    public Result delete(@PathVariable("teacherUserid")String teacherUserid){
         System.out.println("******删除教师******");
         //根据teacherUserid查询到要删除的列
         teacherRepo.delete(teacherUserid);
@@ -73,7 +73,7 @@ public class teacherController {
     }
 
     /*批量删除用户*/
-    @RequestMapping(value = "/deletes",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.DELETE)
     @ResponseBody
     public Result deletes(@RequestBody String[] teacherUseridArray){
         System.out.println("******批量删除教师******");
@@ -89,9 +89,9 @@ public class teacherController {
     }
 
     /*修改一个用户*/
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/{teacherUserid}",method = RequestMethod.PUT)
     @ResponseBody
-    public Result update(@RequestBody teacher tea){
+    public Result update(@PathVariable("teacherUserid")String teacherUserid,@RequestBody teacher tea){
         System.out.println("******更新教师******");
         teacherRepo.saveAndFlush(tea);
         return ResultUtil.success();
