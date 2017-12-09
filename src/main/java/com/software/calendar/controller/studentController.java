@@ -1,5 +1,6 @@
 package com.software.calendar.controller;
 
+import com.software.calendar.bean.Affairs;
 import com.software.calendar.bean.Result;
 import com.software.calendar.bean.course;
 import com.software.calendar.bean.student;
@@ -111,15 +112,15 @@ public class studentController {
     @ResponseBody
     public Result isFree(@PathVariable("stuUserid")String stuUserid,@RequestParam int weekday ,int start ,int end ,int week){
         System.out.println("******判断学生的空闲状态******");
-        
+
         int status=1;//status=1表示有空，status=0表示没空。
         student stu=studentRepo.findByStuUserid(stuUserid);
 
         //若学生没课，直接return
-        if (stu.getCourses().isEmpty()){
+        if (stu.getCourses().isEmpty()&&stu.getAffairs().isEmpty()){
             return ResultUtil.success(status);
         }
-
+        /*日常课程*/
         //若学生*weekday*一天没课，直接return
         for (course c : stu.getCourses()){
             //如果weekday有课即：星期有重叠
@@ -159,6 +160,48 @@ public class studentController {
                 }
             }
         }
+
+        /*事务*/
+        //若学生*weekday*一天没课，直接return
+        for (Affairs c : stu.getAffairs()){
+            //如果weekday有课即：星期有重叠
+            if (c.getAffairsWeek()==weekday){
+                //将[start,end]放进arr1数组里
+                int[] arr1=new int[end-start+1];
+                for (int i=start,j=0;i<=end;i++,j++){
+                    arr1[j]=i;
+                }
+
+                //将[timestart,timeend]放进arr2数组里
+                int[] arr2=new int[c.getAffairsTimeend()-c.getAffairsTimestart()+1];
+                for (int i=c.getAffairsTimestart(),j=0;i<=c.getAffairsTimeend();i++,j++){
+                    arr2[j]=i;
+                }
+
+                //arr是有序数组的交集
+                ArrayList<Integer> arr = new ArrayList<Integer>();
+                int i = 0, j = 0;
+                while (i < arr1.length && (j < arr2.length)) {
+                    if (arr1[i] < arr2[j])
+                        i++;
+                    else if (arr1[i] > arr2[j])
+                        j++;
+                    else {
+                        arr.add(arr1[i]); // 这里应该先加入，然后再加1
+                        i++;j++;
+                    }
+                }
+                //如果[start,end]和[timestart,timeend]的交集>0即：课程节数有重叠
+                if (arr.size()>0){
+                    //如果week在[weekstart,weekend]之内即：课程周重叠
+                    if (c.getAffairsWeekstart()<=week&&c.getAffairsWeekend()>=week){
+                        status=0;
+                        return ResultUtil.success(status);
+                    }
+                }
+            }
+        }
+
         return ResultUtil.success(status);
     }
 

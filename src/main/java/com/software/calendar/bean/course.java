@@ -6,8 +6,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Id;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import java.util.Set;
+
 
 @Entity
 public class course{

@@ -232,6 +232,32 @@ function ajaxClasses(majorId){
         },
     })
 }
+
+//ajax根据学生id判断空闲状态
+function ajaxStatus(stuUserid) {
+    var url='/students/'+stuUserid+'/status';
+    $.ajax({
+        url:url,
+        type:"GET", //GET
+        async:true,    //或false,是否异步
+        data:{
+            weekday:$("select").eq(1).val(),
+			start:$("select").eq(2).val(),
+			end:$("select").eq(3).val(),
+			week:$("select").eq(0).val()
+        },
+        timeout:5000,    //超时时间
+        dataType:"json",    //返回的数据格式：json/xml/html/script/jsonp/text
+        success:function(data){
+            updateStatus(stuUserid,data);
+            // alert(data.data);
+        },
+        error:function(data){
+            // alert("getStudentsError:"+data.status)
+        },
+    })
+}
+
 //动态生成学院列表
 function updateAcademy(result){
 	var academy=$("select").eq(4);
@@ -298,9 +324,32 @@ function updateStudent(result){
             +'<td>'+result.data[i].stuName+'</td>'
             +'<td>'+result.data[i].stuUserid+'</td>'
             +'<td>'+result.data[i].stuPhonenum+'</td>'
-            +'<td><img src="img/LLZ_IMG/LLZgreen32.png"></td>'
+            +'<td><img src="img/LLZ_IMG/LLZdefault32.png"></td>'
             +'</tr>');
         $(body).append($txt);
     }
+    //刷新状态
+    for (var i=0;i<result.data.length;i++){
+		ajaxStatus(result.data[i].stuUserid);
+	}
+}
+//刷新状态
+function updateStatus(stuUserid, result) {
+	var body=$("tbody");
+	var trs=$(body).children();
+	for (var i=0;i<trs.length;i++){
+		var tds=$(trs).eq(i);
+		//如果id相同
+		if(stuUserid==$(tds).children().eq(3).text()){
+			//如果没空
+			if(result.data==0){
+				$(tds).addClass("danger");//添加危险属性
+				$(tds).removeAttr("onclick");//移除点击事件
+				$(tds).children().find("img").attr("src","img/LLZ_IMG/LLZyellow32.png");//更换图片
+			}else {
+                $(tds).children().find("img").attr("src","img/LLZ_IMG/LLZgreen32.png");
+			}
+		}
+	}
 
 }

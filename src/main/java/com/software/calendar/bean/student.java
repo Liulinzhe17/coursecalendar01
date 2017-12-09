@@ -23,8 +23,22 @@ public class student{
             @JoinColumn(name = "courseId", referencedColumnName = "courseId") })
     private Set<course>courses;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "staffairs", joinColumns = {
+            @JoinColumn(name = "stuUserid", referencedColumnName = "stuUserid") }, inverseJoinColumns = {
+            @JoinColumn(name = "affairsId", referencedColumnName = "affairsId") })
+    private Set<Affairs>affairs;
+
     public student(){
 
+    }
+
+    public Set<Affairs> getAffairs() {
+        return affairs;
+    }
+
+    public void setAffairs(Set<Affairs> affairs) {
+        this.affairs = affairs;
     }
 
     public Set<course> getCourses() {
