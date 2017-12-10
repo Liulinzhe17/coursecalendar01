@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<!-- 网络 新 Bootstrap 核心 CSS 文件 -->
+	<!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+	<!--引入本地的bootstarp.min.css-->
+	<link rel="stylesheet" href="css/LLZ_CSS/bootstrap.min.css" />
+	<!--加入自定义的css文件-->
+	<link rel="stylesheet" href="css/LLZ_CSS/addWork.css" />
+	<title>添加事务</title>
+</head>
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<!--nav-->
+		<div class="col-md-12 column" id="nav">
+			<h4 class="text-center">添加事务</h4>
+		</div>
+		<div class="col-md-2 column">
+			<!--用户的操作活动记录-->
+			<div class="list-group text-center">
+				<a href="#" class="list-group-item active"  id="tips">
+					<h4 class="list-group-item-heading">操作记录</h4>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-8 column">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<form role="form">
+						<!--选择时间-->
+						<div class="row">
+							<div class="col-md-3">
+								<label for="name">第几周</label>
+								<select class="form-control">
+									<option value="1">第一周</option>
+									<option value="2">第二周</option>
+									<option value="3">第三周</option>
+									<option value="4">第四周</option>
+									<option value="5">第五周</option>
+									<option value="6">第六周</option>
+									<option value="7">第七周</option>
+									<option value="8">第八周</option>
+									<option value="9">第九周</option>
+									<option value="10">第十周</option>
+									<option value="11">第十一周</option>
+									<option value="12">第十二周</option>
+									<option value="13">第十三周</option>
+									<option value="14">第十四周</option>
+									<option value="15">第十五周</option>
+									<option value="16">第十六周</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="name">星期几</label>
+								<select class="form-control">
+									<option value="1">星期一</option>
+									<option value="2">星期二</option>
+									<option value="3">星期三</option>
+									<option value="4">星期四</option>
+									<option value="5">星期五</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="name">开始节数</label>
+								<select class="form-control">
+									<option value="1">第一节</option>
+									<option value="2">第二节</option>
+									<option value="3">第三节</option>
+									<option value="4">第四节</option>
+									<option value="5">第五节</option>
+									<option value="6">第六节</option>
+									<option value="7">第七节</option>
+									<option value="8">第八节</option>
+									<option value="9">第九节</option>
+									<option value="10">第十节</option>
+									<option value="11">第十一节</option>
+									<option value="12">第十二节</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="name">结束节数</label>
+								<select class="form-control">
+									<option value="1">第一节</option>
+									<option value="2">第二节</option>
+									<option value="3">第三节</option>
+									<option value="4">第四节</option>
+									<option value="5">第五节</option>
+									<option value="6">第六节</option>
+									<option value="7">第七节</option>
+									<option value="8">第八节</option>
+									<option value="9">第九节</option>
+									<option value="10">第十节</option>
+									<option value="11">第十一节</option>
+									<option value="12">第十二节</option>
+								</select>
+							</div>
+						</div>
+						<!--学院专业班级-->
+						<div class="row">
+							<div class="col-md-3">
+								<label for="name">学院</label>
+								<select class="form-control">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="name">专业</label>
+								<select class="form-control">
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="name">班级</label>
+								<select class="form-control">
+								</select>
+							</div>
+							<!--筛选button-->
+							<div class="col-md-3">
+								<label for="name">筛选</label>
+								<button class="btn btn-large btn-success btn-block" type="button" onclick="ajaxUserInfo()">筛选</button>
+							</div>
+						</div>
+					</form>
+					<br>
+					<!--按钮组-->
+					<div class="text-right">
+						<button class="btn btn-primary" type="button" onclick="selectAll()">全选</button>
+						<button class="btn btn-warning" type="button" onclick="selectNone()">取消全选</button>
+					</div>
+				</div>
+			</div>
+			<!--<div style="width:auto; height:400px; overflow:scroll;">table滚动条-->
+			<table class="table table-hover table-bordered">
+				<caption>学生信息</caption>
+				<thead>
+				<tr>
+					<th class="text-center">学院</th>
+					<th class="text-center">班级</th>
+					<th class="text-center">姓名</th>
+					<th class="text-center">学号</th>
+					<th class="text-center">手机号码</th>
+					<th class="text-center">空闲状态</th>
+				</tr>
+				</thead>
+				<tbody class="text-center">
+				<tr class="warning"><td colspan="100%">请选择筛选条件！</td></tr>
+				<!--<tr onclick="changeState(this)">-->
+				<!--<td>信息学院</td>-->
+				<!--<td>软件工程</td>-->
+				<!--<td>软件1501</td>-->
+				<!--<td>1512190101</td>-->
+				<!--<td>张三</td>-->
+				<!--<td><img src="img/LLZgreen32.png"></td>-->
+				<!--</tr>-->
+				<!--<tr class="danger">-->
+				<!--<td>信息学院</td>-->
+				<!--<td>软件工程</td>-->
+				<!--<td>软件1501</td>-->
+				<!--<td>1512190102</td>-->
+				<!--<td>李四</td>-->
+				<!--<td><img src="img/LLZyellow32.png"></td>-->
+				<!--</tr>-->
+				</tbody>
+			</table>
+			<div class="text-right">
+				<button class="btn btn-large btn-info" type="button" onclick="addStu()">添加</button>
+			</div>
+			<!--</div>table滚动条-->
+		</div>
+		<div class="col-md-2 column">
+			<div class="list-group text-center">
+				<a href="#" class="list-group-item active" id="stuTpl">
+					<h4 class="list-group-item-heading">已加学生</h4>
+				</a>
+				<!--用户可以手动添加-->
+			</div>
+			<div class="list-group text-center">
+				<a href="#" class="list-group-item active">
+					<h4 class="list-group-item-heading">事务说明</h4>
+				</a>
+				<a href="#" class="list-group-item">
+					<form role="form">
+						<div class="form-group">
+							<label for="name">地点</label>
+							<textarea class="form-control" rows="1"></textarea>
+							<label for="name">简介</label>
+							<textarea class="form-control" rows="3"></textarea>
+						</div>
+					</form>
+				</a>
+				<!--触发模态框-->
+				<button class="btn btn-large btn-success btn-block" type="button" data-toggle="modal" data-target="#myModal" onclick="validate()">发布</button>
+				<!-- 模态框（Modal） -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">验证事务</h4>
+							</div>
+							<div class="modal-body" id="validateText">内容</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="button" class="btn btn-primary" onclick="publish()">确认发布</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--本地的jquery.min.js-->
+<script type="text/javascript" src="js/LLZ_JS/jquery.min.js" ></script>
+<!--本地的bootstrap.min.js-->
+<script type="text/javascript" src="js/LLZ_JS/bootstrap.min.js" ></script>
+
+<!--加入自定义的JavaScript-->
+<script src="js/LLZ_JS/addWork.js"></script>
+</body>
+
+</html>
