@@ -35,7 +35,7 @@ public class AffairsController {
     public Result add(@RequestBody Affairs affairs){
         System.out.println("******增加一个事务******");
         affairsRepo.save(affairs);
-        return ResultUtil.success();
+        return ResultUtil.success(affairs.getAffairsId());
     }
 
     //事务与学生绑定
