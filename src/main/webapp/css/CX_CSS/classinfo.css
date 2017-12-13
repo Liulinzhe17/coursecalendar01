@@ -65,14 +65,13 @@ body{
     text-decoration: none;
 }
 .main_con_tea_div{
-    height:550px;width:200px;color:#fff;
+    height:550px;width:200px;color:#fff;position:absolute;top:80px;display: none;
 }
 .main_con_tea_div_img{
     background-color:#fff;width:150px;height:180px;margin:0px auto;color:rgb(103,111,107);
 }
 .main_con_tea_div p{
-    text-align:left;
+    text-align:center;
     margin:10px 15px;
     font-size:17px;
->>>>>>> cx
 }
