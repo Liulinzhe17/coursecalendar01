@@ -3,7 +3,10 @@ package com.software.calendar.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
 import javax.persistence.GeneratedValue;
+=======
+>>>>>>> cx
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Set;
@@ -11,7 +14,10 @@ import java.util.Set;
 @Entity
 public class Affairs {
     @Id
+<<<<<<< HEAD
     @GeneratedValue
+=======
+>>>>>>> cx
     private Integer affairsId;
     private String affairsName;
     private Integer affairsTimestart;

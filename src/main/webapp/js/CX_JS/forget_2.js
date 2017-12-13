@@ -19,7 +19,11 @@ $(function () {
         var phone_1=phone[1];
         $.ajax({
             type:"post",
+<<<<<<< HEAD
             url:"/student/forget",
+=======
+            url:"/students/forget",
+>>>>>>> cx
             data:{phone:phone_1,pwd:$("#newpwd").val()},
             success:function(data) {
                 if(data==1)alert("修改成功！");

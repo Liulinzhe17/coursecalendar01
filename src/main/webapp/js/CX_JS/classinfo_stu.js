@@ -14,7 +14,10 @@ $.ajax({
     }
 })
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cx
 $.ajax({
     type:"post",
     url:"/course/findcourse",
@@ -29,6 +32,7 @@ $.ajax({
         alert(data.status);
     }
 })
+<<<<<<< HEAD
 $.ajax({
     type:"post",
     url:"/course/findteacher",
@@ -43,6 +47,8 @@ $.ajax({
         alert(data.status);
     }
 })
+>>>>>>> cx
+=======
 >>>>>>> cx
 window.onload = function () {
     window.setTimeout(function () {

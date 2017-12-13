@@ -15,7 +15,10 @@ $.ajax({
     }
 })
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cx
 $.ajax({
     type:"post",
     url:"/course/findcourse",
@@ -30,6 +33,20 @@ $.ajax({
         alert(data.status);
     }
 })
+<<<<<<< HEAD
+>>>>>>> cx
+=======
+$.ajax({
+    type:"post",
+    url:"/course/findteacher",
+    data:{cid:"84527"},
+    success:function (data) {
+        alert(data);
+    },
+    error:function(data){
+        alert(data.status);
+    }
+})
 >>>>>>> cx
 sub.onclick=function(){
     var content=document.getElementById("con").value;
@@ -39,7 +56,10 @@ sub.onclick=function(){
         data:{cid:"84527",con:content,week:cweek},
         success:function (data) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             alert("123");
+=======
+>>>>>>> cx
 =======
 >>>>>>> cx
             $('#sk').html(content);
@@ -57,7 +77,10 @@ sub1.onclick=function(){
         data:{cid:"84527",con:content,week:cweek},
         success:function (data) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             alert("123");
+=======
+>>>>>>> cx
 =======
 >>>>>>> cx
             $('#zy').html(content);
@@ -81,12 +104,18 @@ window.onload = function () {
                         cweek=week[1];
                         $('#sk').html(data.courseOutline);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         $('#zl').html(data.courseData);
 =======
+=======
+>>>>>>> cx
                         var cd=data.courseData;
                         var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
                         cd = cd.replace(reg, "<a href='$1$2' target=\"_blank\">$1$2</a>").replace(/\n/g, "<br />");
                         $('#zl').html(cd);
+<<<<<<< HEAD
+>>>>>>> cx
+=======
 >>>>>>> cx
                         $('#zy').html(data.courseHomework);
                     }

@@ -10,7 +10,11 @@ $(function () {
     $('#login').click(function () {
         $.ajax({
             type:"post",
+<<<<<<< HEAD
             url:"/student/login",
+=======
+            url:"/students/login",
+>>>>>>> cx
             data:{id:$("#uid").val(),pwd:$("#pwd").val()},
             success:function(data) {
                 if(data==1)window.location.href="main_1.html";
