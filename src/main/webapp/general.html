@@ -233,7 +233,7 @@
                             <li><a href="general.html"><i class="fa fa-circle-o"></i>添加教师信息</a></li>
                             <li><a href="generalstu.html"><i class="fa fa-circle-o"></i>添加学生信息</a></li>
                             <li><a href="generalles.html"><i class="fa fa-circle-o"></i>添加课程信息</a></li>
-                            <li><a href="generalaffairs.html"><i class="fa fa-circle-o"></i>添加事务信息</a></li>
+                            <li><a href="addWork.html"><i class="fa fa-circle-o"></i>添加事务信息</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -244,14 +244,14 @@
             </span>
           </a>
                         <ul class="treeview-menu">
-                            <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> 查看教师信息</a></li>
-                            <li><a href="../tables/datastu.html"><i class="fa fa-circle-o"></i> 查看学生信息</a></li>
-                            <li><a href="../tables/datales.html"><i class="fa fa-circle-o"></i> 查看课程信息</a></li>
-                            <li><a href="../tables/dataaffair.html"><i class="fa fa-circle-o"></i> 查看事务信息</a></li>
+                            <li><a href="data.html"><i class="fa fa-circle-o"></i> 查看教师信息</a></li>
+                            <li><a href="datastu.html"><i class="fa fa-circle-o"></i> 查看学生信息</a></li>
+                            <li><a href="datales.html"><i class="fa fa-circle-o"></i> 查看课程信息</a></li>
+                            <li><a href="dataaffair.html"><i class="fa fa-circle-o"></i> 查看事务信息</a></li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="../calendar.html">
+                        <a href="calendar.html">
             <i class="fa fa-calendar"></i> <span>查看校历</span>
           </a>
                     </li>
@@ -329,7 +329,7 @@
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <form role="form" class="form">
-                                        <div class="form-group">
+                                        <div class="form-group" id="teacherAcademy">
                                             <label>请选择学院</label>
                                             <select class="form-control">
                                                 <option>信息学院</option>
@@ -340,17 +340,17 @@
                                             </select>
                                         </div>
                                         <!-- text input -->
-                                        <div class="form-group" id=”id“>
+                                        <div class="form-group" id=”teacherUserid“>
                                             <label>教工号</label>
                                             <input type="text" class="form-control" placeholder="请输入教工号 ...">
                                         </div>
                                         <!-- text input -->
-                                        <div class="form-group" id=”name“>
+                                        <div class="form-group" id=”teacherName“>
                                             <label>姓名</label>
                                             <input type="text" class="form-control" placeholder="请输入姓名 ...">
                                         </div>
                                         <!-- text input -->
-                                        <div class="form-group" id="phone">
+                                        <div class="form-group" id="teacherPhonenum">
                                             <label>手机号</label>
                                             <input type="text" class="form-control" placeholder="请输入手机号 ...">
                                         </div>
@@ -575,9 +575,10 @@
 
     function add() {
         var message = {
-            id: $(".id").val(),
-            name: $(".name").val(),
-            phone: $(".phone").val()
+            teacherAcademy: $(".teacherAcademy").val(),
+            teacherUserid: $(".teacherUserid").val(),
+            teacherName: $(".teacherName").val(),
+            teacherPhonenum: $(".teacherPhonenum").val()
         }
         $.ajax({
                 type: 'post',
