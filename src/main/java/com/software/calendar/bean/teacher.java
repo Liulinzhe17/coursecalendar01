@@ -1,38 +1,26 @@
 package com.software.calendar.bean;
 
-<<<<<<< HEAD
-import javax.persistence.Entity;
-import javax.persistence.Id;
-=======
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Set;
->>>>>>> cx
 
 /*教师实体类*/
 @Entity
 public class teacher {
     @Id
-<<<<<<< HEAD
     private String teacherUserid;
-=======
-    private String teacherId;
->>>>>>> cx
     private String teacherPassword;
     private String teacherName;
     private String teacherAcademy;
     private String teacherPhonenum;
     private Integer teacherPermission;
 
-<<<<<<< HEAD
-=======
     @ManyToMany(mappedBy = "teachers")
     private Set<course> courses;
 
->>>>>>> cx
     public Integer getTeacherPermission() {
         return teacherPermission;
     }
@@ -44,21 +32,12 @@ public class teacher {
     public teacher() {
     }
 
-<<<<<<< HEAD
     public String getTeacherUserid() {
         return teacherUserid;
     }
 
     public void setTeacherUserid(String teacherUserid) {
         this.teacherUserid = teacherUserid;
-=======
-    public String getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
->>>>>>> cx
     }
 
     public String getTeacherPassword() {
@@ -93,12 +72,6 @@ public class teacher {
         this.teacherPhonenum = teacherPhonenum;
     }
 
-<<<<<<< HEAD
-    @Override
-    public String toString() {
-        return "teacher{" +
-                "teacherUserid='" + teacherUserid + '\'' +
-=======
     @JsonIgnore
     public Set<course> getCourses() {
         return courses;
@@ -111,8 +84,7 @@ public class teacher {
     @Override
     public String toString() {
         return "teacher{" +
-                "teacherUserid='" + teacherId + '\'' +
->>>>>>> cx
+                "teacherUserid='" + teacherUserid + '\'' +
                 ", teacherPassword='" + teacherPassword + '\'' +
                 ", teacherName='" + teacherName + '\'' +
                 ", teacherAcademy='" + teacherAcademy + '\'' +

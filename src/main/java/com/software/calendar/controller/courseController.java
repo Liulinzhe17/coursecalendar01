@@ -1,12 +1,6 @@
 package com.software.calendar.controller;
 
-
-<<<<<<< HEAD
-import com.software.calendar.bean.course;
-import com.software.calendar.bean.coursedata;
-=======
 import com.software.calendar.bean.*;
->>>>>>> cx
 import com.software.calendar.repository.courseRepository;
 import com.software.calendar.repository.coursedataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 import java.util.Set;
 
->>>>>>> cx
 @RestController
 @RequestMapping(value="/course")
 public class courseController {
@@ -51,19 +42,11 @@ public class courseController {
         return cd;
     }
 
-<<<<<<< HEAD
-//    @RequestMapping(value="/findteacher",method=RequestMethod.POST)
-//    public coursedata Findteacher(String cid){
-////        coursedata cd = coursedataRepo.findByCourseIdAndCourseWeektime(cid);
-//        return cd;
-//    }
-=======
     @RequestMapping(value="/findteacher",method=RequestMethod.POST)
     public Set<teacher> Findteacher(String cid){
         course c = courseRepo.findByCourseId(cid);
         return c.getTeachers();
     }
->>>>>>> cx
 
 
     @RequestMapping(value="/updatec_outline",method=RequestMethod.POST)
@@ -85,12 +68,11 @@ public class courseController {
         coursedataRepo.saveAndFlush(cd);
         return 1;
     }
-<<<<<<< HEAD
-=======
+
     @RequestMapping(value="/getallcourse",method = RequestMethod.POST)
     public course Getallcourse(String stuid){
         course c = courseRepo.findByCourseId(stuid);
         return c;
     }
->>>>>>> cx
+
 }

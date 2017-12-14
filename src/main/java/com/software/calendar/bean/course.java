@@ -1,18 +1,11 @@
 package com.software.calendar.bean;
 
 
-<<<<<<< HEAD
+import javax.persistence.*;
+import java.util.Set;
 import javax.persistence.ManyToMany;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.Id;
-import javax.persistence.Entity;
-=======
-import javax.persistence.*;
-import java.util.Set;
-import com.fasterxml.jackson.annotation.JsonIgnore;
->>>>>>> cx
-
 
 @Entity
 public class course{
@@ -33,15 +26,12 @@ public class course{
     @ManyToMany(mappedBy = "courses")
     private Set<student> students;
 
-<<<<<<< HEAD
-=======
     @ManyToMany(cascade= CascadeType.ALL)
     @JoinTable(name="tcourse",joinColumns = {
             @JoinColumn(name = "courseId", referencedColumnName = "courseId")},inverseJoinColumns = {
-            @JoinColumn(name = "teacherId", referencedColumnName = "teacherId") })
+            @JoinColumn(name = "teacherUserid", referencedColumnName = "teacherUserid") })
     private Set<teacher> teachers;
 
->>>>>>> cx
     public course(){
 
     }
@@ -58,11 +48,8 @@ public class course{
                 ", courseWeek=" + courseWeek +
                 ", courseWeekstart=" + courseWeekstart +
                 ", courseWeekend=" + courseWeekend +
-<<<<<<< HEAD
-=======
                 ", students=" + students +
                 ", teachers=" + teachers +
->>>>>>> cx
                 '}';
     }
 
@@ -147,8 +134,6 @@ public class course{
         this.students = students;
     }
 
-<<<<<<< HEAD
-=======
     public Set<teacher> getTeachers() {
         return teachers;
     }
@@ -156,5 +141,4 @@ public class course{
     public void setTeachers(Set<teacher> teachers) {
         this.teachers = teachers;
     }
->>>>>>> cx
 }
