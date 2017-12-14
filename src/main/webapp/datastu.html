@@ -303,6 +303,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>学号</th>
                   <th>学院</th>
                   <th>班级</th>
                   <th>姓名</th>
@@ -311,24 +312,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                 <tr>
+                 <tr> 
+                  <td>1</td>
                   <td>信息学院</td>
                   <td>软件1501班</td>
                   <td>林子</td>
                   <td>16190274857</td>
                   <td>
                       <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='../forms/generalstu.html'">修改</button>
-                      <button type="submit" class="btn btn-danger" onclick="javaScript:alert('已删除')">删除</button>
+                      <button type="submit" class="btn btn-danger" onclick="deleteStu()">删除</button>
                   </td>
                 </tr>
                 <tr>
+                  <td>1</td>
                   <td>信息学院</td>
                   <td>软件1501班</td>
                   <td>林子</td>
                   <td>16190274857</td>
                   <td>
                       <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='../forms/generalstu.html'">修改</button>
-                      <button type="submit" class="btn btn-danger" onclick="javaScript:alert('已删除')">删除</button>
+                      <button type="submit" class="btn btn-danger" onclick="deleteStu()">删除</button>
                   </td>
                 </tr>
                </tbody>
@@ -566,7 +569,34 @@
 <script src="js/ZCY_JS/demo.js"></script>
 <!-- page script -->
 <script>
+ function cheakStu(){
+    $.ajax({
+      url:'/students',
+      method:'post',
+      data:data,
+      success:function(data){
+        $.each(data,function(item){
+          $('.teacherMessage').append( '<tr><td>'+item.stuUserid'</td><td>'+item.stuAcademy+'</td><td>'+item.stuClass+'</td><td>'+item.stuName+'</td><td>'+item.stuPhonenum+'</td><td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'../forms/generalstu.html\'">修改</button><button type="submit" class="btn btn-danger" onclick="deleteStu()">删除</button></td></tr>')
+        })
+      }
+    })
+    // $(".delete").parents("tr").first().remove();
+  }
+  function deleteStu(item){
+    $.ajax({
+      url:'/students',
+      method:'delete',
+      data:item,
+      success:function(data){
+        if(data.code==200){
+          $(".delete").parents("tr").first().remove();
+        }
+      }
+    })
+    // $(".delete").parents("tr").first().remove();
+  }
   $(function () {
+    cheakStu();
     $('#example1').DataTable()
     $('#example2').DataTable({
       'paging'      : true,
