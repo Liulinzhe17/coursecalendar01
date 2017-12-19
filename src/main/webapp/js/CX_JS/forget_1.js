@@ -1,7 +1,8 @@
 $(function () {
     $('#sub').click(function () {
         var phone=$('#phone').val();
-        var url="forget_2.html?phone="+phone;
+        var url="forget_2.html";
+        localStorage.setItem("phone",phone);
         window.location.href=url;
     })
     $('#send').click(function(){

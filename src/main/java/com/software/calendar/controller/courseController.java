@@ -54,8 +54,8 @@ public class courseController {
         int we = Integer.parseInt(week);
         coursedata cd = coursedataRepo.findByCourseIdAndCourseWeektime(cid,we);
         System.out.println(cd.toString());
-//        cd.setCourseOutline(con);
-//        int s=coursedataRepo.savebycidandweektime(con,cid,we);
+        cd.setCourseOutline(con);
+        coursedataRepo.saveAndFlush(cd);
         return 1;
     }
 
@@ -63,8 +63,7 @@ public class courseController {
     public int Updatec_homework(String cid,String con,String week){
         int we = Integer.parseInt(week);
         coursedata cd = coursedataRepo.findByCourseIdAndCourseWeektime(cid,we);
-        System.out.println(cd.toString());
-//        cd.setCourseHomework(con);
+        cd.setCourseHomework(con);
         coursedataRepo.saveAndFlush(cd);
         return 1;
     }

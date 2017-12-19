@@ -17,6 +17,7 @@ public class teacher {
     private String teacherAcademy;
     private String teacherPhonenum;
     private Integer teacherPermission;
+    private String teacherTitle;
 
     @ManyToMany(mappedBy = "teachers")
     private Set<course> courses;
@@ -36,8 +37,21 @@ public class teacher {
         return teacherUserid;
     }
 
+<<<<<<< HEAD
     public void setTeacherUserid(String teacherUserid) {
         this.teacherUserid = teacherUserid;
+=======
+    public String getTeacherTitle() {
+        return teacherTitle;
+    }
+
+    public void setTeacherTitle(String teacherTitle) {
+        this.teacherTitle = teacherTitle;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+>>>>>>> cx
     }
 
     public String getTeacherPassword() {
