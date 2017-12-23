@@ -13,11 +13,7 @@ $.ajax({
         $('#weeknum').html(txt);
     }
 })
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> cx
+
 $.ajax({
     type:"post",
     url:"/course/findcourse",
@@ -32,21 +28,12 @@ $.ajax({
         alert(data.status);
     }
 })
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cx
+
 $.ajax({
     type:"post",
     url:"/course/findteacher",
     data:{cid:"84527"},
     success:function (data) {
-<<<<<<< HEAD
-        var name=data.courseName;
-        var address=data.courseAddress;
-        var na="课程名："+name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"教学地点："+address;
-        $("#class_header").html(na);
-=======
         var len =data.length;
         var txt="";
 
@@ -65,19 +52,13 @@ $.ajax({
         $('.main_con_tea_div').eq(0).css({
             "display":"block"
         });
-        alert(len);
->>>>>>> cx
+
     },
     error:function(data){
         alert(data.status);
     }
 })
-<<<<<<< HEAD
->>>>>>> cx
-=======
->>>>>>> cx
-=======
->>>>>>> cx
+
 window.onload = function () {
     window.setTimeout(function () {
         var s=$(".weeknumber");

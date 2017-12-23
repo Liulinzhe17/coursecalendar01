@@ -17,16 +17,8 @@ $(function () {
         var phone=localStorage.getItem("phone");
         $.ajax({
             type:"post",
-<<<<<<< HEAD
-            url:"/student/forget",
-=======
             url:"/students/forget",
-<<<<<<< HEAD
->>>>>>> cx
-            data:{phone:phone_1,pwd:$("#newpwd").val()},
-=======
             data:{phone:phone,pwd:$("#newpwd").val()},
->>>>>>> cx
             success:function(data) {
                 if(data==1)alert("修改成功！");
 

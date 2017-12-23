@@ -37,10 +37,10 @@ public class teacher {
         return teacherUserid;
     }
 
-<<<<<<< HEAD
     public void setTeacherUserid(String teacherUserid) {
         this.teacherUserid = teacherUserid;
-=======
+    }
+
     public String getTeacherTitle() {
         return teacherTitle;
     }
@@ -49,10 +49,6 @@ public class teacher {
         this.teacherTitle = teacherTitle;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
->>>>>>> cx
-    }
 
     public String getTeacherPassword() {
         return teacherPassword;

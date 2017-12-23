@@ -14,11 +14,7 @@ $.ajax({
         $('#weeknum').html(txt);
     }
 })
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> cx
+
 $.ajax({
     type:"post",
     url:"/course/findcourse",
@@ -33,9 +29,7 @@ $.ajax({
         alert(data.status);
     }
 })
-<<<<<<< HEAD
->>>>>>> cx
-=======
+
 $.ajax({
     type:"post",
     url:"/course/findteacher",
@@ -65,7 +59,7 @@ $.ajax({
         alert(data.status);
     }
 })
->>>>>>> cx
+
 sub.onclick=function(){
     var content=document.getElementById("con").value;
     $.ajax({
@@ -73,13 +67,6 @@ sub.onclick=function(){
         url:"/course/updatec_outline",
         data:{cid:"84527",con:content,week:cweek},
         success:function (data) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            alert("123");
-=======
->>>>>>> cx
-=======
->>>>>>> cx
             $('#sk').html(content);
         },
         error:function(data){
@@ -94,13 +81,6 @@ sub1.onclick=function(){
         url:"/course/updatec_homework",
         data:{cid:"84527",con:content,week:cweek},
         success:function (data) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            alert("123");
-=======
->>>>>>> cx
-=======
->>>>>>> cx
             $('#zy').html(content);
         },
         error:function(data){
@@ -121,20 +101,10 @@ window.onload = function () {
                     success:function(data) {
                         cweek=week[1];
                         $('#sk').html(data.courseOutline);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        $('#zl').html(data.courseData);
-=======
-=======
->>>>>>> cx
                         var cd=data.courseData;
                         var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
                         cd = cd.replace(reg, "<a href='$1$2' target=\"_blank\">$1$2</a>").replace(/\n/g, "<br />");
                         $('#zl').html(cd);
-<<<<<<< HEAD
->>>>>>> cx
-=======
->>>>>>> cx
                         $('#zy').html(data.courseHomework);
                     }
                 })
