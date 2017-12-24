@@ -1,6 +1,6 @@
 $.ajax({
     type:"post",
-    url:"/course/findweek",
+    url:"/courses/findweek",
     data:{id:"84527"},
     success:function(data) {
         var txt="<ul style=\"margin-left:-31px;width:140px\">"
@@ -16,7 +16,7 @@ $.ajax({
 
 $.ajax({
     type:"post",
-    url:"/course/findcourse",
+    url:"/courses/getheader",
     data:{cid:"84527"},
     success:function (data) {
         var name=data.courseName;
@@ -31,7 +31,7 @@ $.ajax({
 
 $.ajax({
     type:"post",
-    url:"/course/findteacher",
+    url:"/courses/teacherinfo",
     data:{cid:"84527"},
     success:function (data) {
         var len =data.length;
@@ -67,7 +67,7 @@ window.onload = function () {
                 var week=this.text.split("__");
                 $.ajax({
                     type:"post",
-                    url:"/course/finddata",
+                    url:"/courses/coursedata",
                     data:{cid:"84527",week:week[1]},
                     success:function(data) {
                         $('#sk').html(data.courseOutline);
