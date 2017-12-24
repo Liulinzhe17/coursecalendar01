@@ -99,7 +99,7 @@ public class studentController {
     }
 
     /*修改一个用户*/
-    @RequestMapping(value = "{stuUserid}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/{stuUserid}",method = RequestMethod.PUT)
     @ResponseBody
     public Result update(@PathVariable("stuUserid")String stuUserid, @RequestBody student stu){
         System.out.println("******更新学生******");
