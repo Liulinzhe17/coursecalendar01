@@ -305,14 +305,14 @@
                                             <th>操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="teacherMessage">
                                         <tr>
-                                            <td>1</td>
+                                            <td>145637</td>
                                             <td>信息学院</td>
                                             <td>林子</td>
                                             <td>13898662221</td>
                                             <td>
-                                                <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='../forms/general.html'">修改</button>
+                                                <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='general.html'">修改</button>
                                                 <button type="submit" class="btn btn-danger delete" onclick="deleteTeacher()">删除</button>
                                             </td>
                                         </tr>
@@ -535,20 +535,23 @@
     <script>
     function cheakTeacher(){
     $.ajax({
-      url:'/teachers/',
-      method:'post',
-      data:data,
+      url:'/teachers',
+      method:'get',
+        contentType:"application/json",
+//      data:data,
       success:function(data){
-        $.each(data,function(item){
-          $('.teacherMessage').append( '<tr><td>'+item.teacherUserid+'</td><td>'+item.teacherAcademy+'</td><td>'+item.teacherName+'</td>'+item.teacherPhonenum+'<td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'../forms/general.html\'">修改</button><button type="submit" class="btn btn-danger delete" onclick="deleteTeacher('+item.teacherUserid+')">删除</button></td></tr>')
+        $.each(data.data,function(index,item){
+          $('.teacherMessage').append( '<tr><td>'+item.teacherUserid+'</td><td>'+item.teacherAcademy+'</td><td>'+item.teacherName+'</td><td>'+item.teacherPhonenum+'</td><td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'../forms/general.html\'">修改</button><button type="submit" class="btn btn-danger delete" onclick="deleteTeacher('+item.teacherUserid+')">删除</button></td></tr>')
         })
+          console.log(data);
       }
     })
     // $(".delete").parents("tr").first().remove();
   }
   function deleteTeacher(item){
     $.ajax({
-      url:'/teachers/teacherUserid',
+      url:'/teachers'+item.teacherUserid,
+        contentType: "application/json; charset=utf-8",
       method:'delete',
       data:item,
       success:function(data){
