@@ -8,7 +8,6 @@ import java.util.List;
 public interface studentRepository extends JpaRepository<student,String> {
     student findByStuUseridAndStuPassword(String id, String pwd);
     student findByStuPhonenum(String phone);
-
     /*根据班级id查询学生*/
     public List<student> findByStuClass(String stuClass);
 

@@ -1,38 +1,37 @@
 package com.software.calendar.bean;
 
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import java.io.Serializable;
 
 @Entity
-public class coursedata {
-
+@IdClass(IdWeektime.class)
+public class coursedata implements Serializable{
     @Id
     private String courseId;
+    @Id
     private Integer courseWeektime;
     private Integer courseWeek;
     private String courseHomework;
     private String courseOutline;
     private String courseData;
 
-    public coursedata(){
-
-    }
-
-    public String getCourseId() {
+    public String getCourseid() {
         return courseId;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setCourseid(String courseid) {
+        this.courseId = courseid;
     }
-
-    public Integer getCourseWeektime() {
+    public Integer getWeektime() {
         return courseWeektime;
     }
 
-    public void setCourseWeektime(Integer courseWeektime) {
-        this.courseWeektime = courseWeektime;
+    public void setWeektime(Integer weektime) {
+        this.courseWeektime = weektime;
     }
 
     public Integer getCourseWeek() {

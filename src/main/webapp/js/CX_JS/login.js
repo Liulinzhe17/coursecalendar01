@@ -10,10 +10,10 @@ $(function () {
     $('#login').click(function () {
         $.ajax({
             type:"post",
-            url:"/student/login",
+            url:"/students/login",
             data:{id:$("#uid").val(),pwd:$("#pwd").val()},
             success:function(data) {
-                if(data==1)window.location.href="main_1.html";
+                if(data==1)window.location.href="main.html";
                 else $('#login_erro').html("登录失败,帐号或密码错误");
             }
         })

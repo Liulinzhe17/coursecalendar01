@@ -1,5 +1,7 @@
 package com.software.calendar.bean;
 
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,8 +23,22 @@ public class student{
             @JoinColumn(name = "courseId", referencedColumnName = "courseId") })
     private Set<course>courses;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "staffairs", joinColumns = {
+            @JoinColumn(name = "stuUserid", referencedColumnName = "stuUserid") }, inverseJoinColumns = {
+            @JoinColumn(name = "affairsId", referencedColumnName = "affairsId") })
+    private Set<Affairs>affairs;
+
     public student(){
 
+    }
+
+    public Set<Affairs> getAffairs() {
+        return affairs;
+    }
+
+    public void setAffairs(Set<Affairs> affairs) {
+        this.affairs = affairs;
     }
 
     public Set<course> getCourses() {
@@ -40,7 +56,7 @@ public class student{
     public void setStuPermission(Integer stuPermission) {
         this.stuPermission = stuPermission;
     }
-
+    
     public String getStuUserid() {
         return stuUserid;
     }

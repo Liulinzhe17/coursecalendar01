@@ -14,13 +14,11 @@ function validate() {
 }
 $(function () {
     $('#sub').click(function () {
-        var url = location.href;
-        var phone=url.split("=")
-        var phone_1=phone[1];
+        var phone=localStorage.getItem("phone");
         $.ajax({
             type:"post",
-            url:"/student/forget",
-            data:{phone:phone_1,pwd:$("#newpwd").val()},
+            url:"/students/forget",
+            data:{phone:phone,pwd:$("#newpwd").val()},
             success:function(data) {
                 if(data==1)alert("修改成功！");
 

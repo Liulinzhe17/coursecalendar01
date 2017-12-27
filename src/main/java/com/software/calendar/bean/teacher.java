@@ -1,7 +1,11 @@
 package com.software.calendar.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.Set;
 
 /*教师实体类*/
 @Entity
@@ -13,6 +17,10 @@ public class teacher {
     private String teacherAcademy;
     private String teacherPhonenum;
     private Integer teacherPermission;
+    private String teacherTitle;
+
+    @ManyToMany(mappedBy = "teachers")
+    private Set<course> courses;
 
     public Integer getTeacherPermission() {
         return teacherPermission;
@@ -32,6 +40,15 @@ public class teacher {
     public void setTeacherUserid(String teacherUserid) {
         this.teacherUserid = teacherUserid;
     }
+
+    public String getTeacherTitle() {
+        return teacherTitle;
+    }
+
+    public void setTeacherTitle(String teacherTitle) {
+        this.teacherTitle = teacherTitle;
+    }
+
 
     public String getTeacherPassword() {
         return teacherPassword;
@@ -63,6 +80,15 @@ public class teacher {
 
     public void setTeacherPhonenum(String teacherPhonenum) {
         this.teacherPhonenum = teacherPhonenum;
+    }
+
+    @JsonIgnore
+    public Set<course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<course> courses) {
+        this.courses = courses;
     }
 
     @Override
