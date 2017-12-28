@@ -313,7 +313,7 @@
                                             <td>13898662221</td>
                                             <td>
                                                 <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='general.html'">修改</button>
-                                                <button type="submit" class="btn btn-danger delete" onclick="deleteTeacher()">删除</button>
+                                                <button type="submit" class="btn btn-danger delete" onclick="deleteTeacher(\''+item.teacherUserid+'\')">删除</button>
                                             </td>
                                         </tr>
                                         </tfoot>
@@ -541,7 +541,7 @@
 //      data:data,
       success:function(data){
         $.each(data.data,function(index,item){
-          $('.teacherMessage').append( '<tr><td>'+item.teacherUserid+'</td><td>'+item.teacherAcademy+'</td><td>'+item.teacherName+'</td><td>'+item.teacherPhonenum+'</td><td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'../forms/general.html\'">修改</button><button type="submit" class="btn btn-danger delete" onclick="deleteTeacher('+item.teacherUserid+')">删除</button></td></tr>')
+          $('.teacherMessage').append( '<tr><td>'+item.teacherUserid+'</td><td>'+item.teacherAcademy+'</td><td>'+item.teacherName+'</td><td>'+item.teacherPhonenum+'</td><td><button type="button" class="btn btn-primary" onclick="javaScript:window.location.href=\'../forms/general.html\'">修改</button><button type="button" class="btn btn-danger" onclick="deleteTeacher(\''+item.teacherUserid+'\')">删除</button></td></tr>')
         })
           console.log(data);
       }
@@ -550,10 +550,10 @@
   }
   function deleteTeacher(item){
     $.ajax({
-      url:'/teachers'+item.teacherUserid,
+      url:'/teachers/'+item,
         contentType: "application/json; charset=utf-8",
       method:'delete',
-      data:item,
+
       success:function(data){
         if(data.code==200){
           $(".delete").parents("tr").first().remove();
