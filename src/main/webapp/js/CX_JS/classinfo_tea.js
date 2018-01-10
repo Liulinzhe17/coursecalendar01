@@ -1,8 +1,9 @@
+var course_id=localStorage.getItem("courseId");
 var cweek="1";
 $.ajax({
     type:"post",
     url:"/courses/findweek",
-    data:{id:"000001"},
+    data:{id:"courseId"},
     success:function(data) {
         var txt="<ul style=\"margin-left:-31px;width:140px\">"
         var se=data.split('-');
@@ -18,7 +19,7 @@ $.ajax({
 $.ajax({
     type:"post",
     url:"/courses/getheader",
-    data:{cid:"000001"},
+    data:{cid:"courseId"},
     success:function (data) {
         var name=data.courseName;
         var address=data.courseAddress;
@@ -33,7 +34,7 @@ $.ajax({
 $.ajax({
     type:"post",
     url:"/courses/teacherinfo",
-    data:{cid:"000001"},
+    data:{cid:"courseId"},
     success:function (data) {
         var len =data.length;
         var txt="";
@@ -64,7 +65,7 @@ sub.onclick=function(){
     $.ajax({
         type:"post",
         url:"/courses/updatec_outline",
-        data:{cid:"000001",con:content,week:cweek},
+        data:{cid:"courseId",con:content,week:cweek},
         success:function (data) {
             $('#sk').html(content);
         },
