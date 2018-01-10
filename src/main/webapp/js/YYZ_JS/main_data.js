@@ -1,3 +1,4 @@
+
 $.ajax({
          type:"GET",
          url:"/courses/stuUserid/weektime",
@@ -23,12 +24,6 @@ $.ajax({
 //
 //     }
 // })
-function updateClass() {
-    var major = $("select");
-    //删除option所有的兄弟
-    $(major).children().remove();
-//  $(major).append($('<option value="">请选择</option>'));
-    //生成与学院相对应的专业
     $.ajax({
         url: "/courses/getallcourse",
         type: "POST", //GET
@@ -37,16 +32,16 @@ function updateClass() {
         timeout: 5000,    //超时时间
         dataType: "json",    //返回的数据格式：json/xml/html/script/jsonp/text
         success: function (data) {
+            var txt="";
             $.each(data, function(idx, obj) {
-                var $txt = $('<option value='+'obj.courseName'+'>'+obj.courseName+'</option>');
-                $(major).append($txt);
+                txt = txt+"<li class=\"nav2_li\" id="+obj.courseId+">"+obj.courseName+"</li>";
             });
+            $('.nav2').html(txt);
         },
         error: function (data) {
             //alert("error:"+data.status);
         },
     });
-}
 function CourseMessage(){
 	$.ajax({
 		url:"/courses/coursedata",
@@ -68,4 +63,24 @@ function CourseMessage(){
 }
 function show() {
     console("test");
+}
+$('#active_a').click(function(){
+    if($('.nav2').css("display")=="none"){
+        $('.nav2').css("display","block");
+    }
+    else $('.nav2').css("display","none");
+})
+
+
+window.onload = function () {
+    window.setTimeout(function () {
+        var lis=$('.nav2_li');
+        for(var index =0 ;index<lis.length;index++){
+            lis.eq(index).click(function () {
+                var url="classinfo_stu.html";
+                localStorage.setItem("courseId",this.id);
+                window.location.href=url;
+            })
+        }
+    },"500");
 }

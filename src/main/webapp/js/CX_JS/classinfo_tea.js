@@ -3,7 +3,7 @@ var cweek="1";
 $.ajax({
     type:"post",
     url:"/courses/findweek",
-    data:{id:"courseId"},
+    data:{id:course_id},
     success:function(data) {
         var txt="<ul style=\"margin-left:-31px;width:140px\">"
         var se=data.split('-');
@@ -19,7 +19,7 @@ $.ajax({
 $.ajax({
     type:"post",
     url:"/courses/getheader",
-    data:{cid:"courseId"},
+    data:{cid:course_id},
     success:function (data) {
         var name=data.courseName;
         var address=data.courseAddress;
@@ -34,7 +34,7 @@ $.ajax({
 $.ajax({
     type:"post",
     url:"/courses/teacherinfo",
-    data:{cid:"courseId"},
+    data:{cid:course_id},
     success:function (data) {
         var len =data.length;
         var txt="";
@@ -65,7 +65,7 @@ sub.onclick=function(){
     $.ajax({
         type:"post",
         url:"/courses/updatec_outline",
-        data:{cid:"courseId",con:content,week:cweek},
+        data:{cid:course_id,con:content,week:cweek},
         success:function (data) {
             $('#sk').html(content);
         },
@@ -79,7 +79,7 @@ sub1.onclick=function(){
     $.ajax({
         type:"post",
         url:"/courses/updatec_homework",
-        data:{cid:"000001",con:content,week:cweek},
+        data:{cid:course_id,con:content,week:cweek},
         success:function (data) {
             $('#zy').html(content);
         },
@@ -97,7 +97,7 @@ window.onload = function () {
                 $.ajax({
                     type:"post",
                     url:"/courses/coursedata",
-                    data:{cid:"000001",week:week[1]},
+                    data:{cid:course_id,week:week[1]},
                     success:function(data) {
                         cweek=week[1];
                         $('#sk').html(data.courseOutline);
@@ -111,6 +111,4 @@ window.onload = function () {
             })
         }
     },"500");
-
-
 }

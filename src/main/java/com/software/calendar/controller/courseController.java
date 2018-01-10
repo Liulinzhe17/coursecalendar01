@@ -96,6 +96,11 @@ public class courseController {
         }
         return courses;
     }
+    @RequestMapping(method = RequestMethod.GET)//查询所有课程
+    public List<course> allcourses(){
+        List<course> list = courseRepo.findAll();
+        return list;
+    }
     @RequestMapping(value = "/courseId",method = RequestMethod.GET)//查询单个详情
     public course getcourse(String courseId){
         return courseRepo.findByCourseId(courseId);
@@ -106,8 +111,8 @@ public class courseController {
         courseRepo.saveAndFlush(c);
         return 1;
     }
-    @RequestMapping(value = "/{courseId}",method = RequestMethod.PUT)//更新课程
-    public int updatecourse(@PathVariable("courseId")String courseId,@RequestBody course c){
+    @RequestMapping(method = RequestMethod.PUT)//更新课程
+    public int updatecourse(@RequestBody course c){
         courseRepo.saveAndFlush(c);
         return 1;
     }

@@ -25,7 +25,26 @@
 	<![endif]-->
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
-
+	<style>
+			.nav2{
+				margin-left: 0;
+				margin-bottom: 18px;
+				list-style: none;
+			}
+			.nav2 li{
+				margin-bottom: 4px;
+				line-height:18px;
+				padding: 10px 8px;
+				font-size: 12px;
+				font-weight: 600;
+				border:1px solid #d5d5d5;
+				border-radius: 15px;
+				width:240px;
+				margin-left: 30px;
+				padding-left:30px;
+				cursor: pointer;
+			}
+	</style>
 <body>
 <div class="navbar navbar-fixed-top">
 
@@ -114,26 +133,22 @@
 				<hr />
 
 				<ul id="main-nav" class="nav nav-tabs nav-stacked">
-
 					<li class="active">
-						<a href="./main.html">
-							<i class="icon-home"></i>
+						<a id="active_a">
+							<i class="icon-home" id="mycourse"></i>
 							我的课表
 						</a>
+						<ul class="nav2" >
+							<!--<li class="nav2_li" id="000001">软件工程实践</li>-->
+							<!--<li>数据库设计</li>-->
+							<!--<li>1</li>-->
+						</ul>
 					</li>
-
 					<li>
 						<a href="./addWork.html">
 							<i class="icon-pushpin"></i>
 							添加事务
 						</a>
-					</li>
-					<li>
-						<select class="form-control" onclick="updateClass()">
-							<option value="">
-								<i class="icon-pushpin">我的课程</i>
-							</option>
-						</select>
 					</li>
 				</ul>
 			</div> <!-- /span3 -->
