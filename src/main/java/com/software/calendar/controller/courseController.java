@@ -74,4 +74,10 @@ public class courseController {
         return c;
     }
 
+    @RequestMapping(method = RequestMethod.GET)//查询所有课程
+    public List<course> allcourses(){
+        List<course> list = courseRepo.findAll();
+        return list;
+    }
+
 }
