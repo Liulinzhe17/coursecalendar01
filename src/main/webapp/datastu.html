@@ -311,7 +311,7 @@
                   <th>操作</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="stuMessage">
                  <tr> 
                   <td>1</td>
                   <td>信息学院</td>
@@ -572,21 +572,23 @@
  function cheakStu(){
     $.ajax({
       url:'/students',
-      method:'post',
-      data:data,
+      method:'get',
+      contentType:"application/json",
+//    data:data,
       success:function(data){
-        $.each(data,function(item){
-          $('.teacherMessage').append( '<tr><td>'+item.stuUserid'</td><td>'+item.stuAcademy+'</td><td>'+item.stuClass+'</td><td>'+item.stuName+'</td><td>'+item.stuPhonenum+'</td><td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'../forms/generalstu.html\'">修改</button><button type="submit" class="btn btn-danger" onclick="deleteStu()">删除</button></td></tr>')
+        $.each(data.data,function(index,item){
+          $('.stuMessage').append( '<tr><td>'+item.stuUserid+'</td><td>'+item.stuAcademy+'</td><td>'+item.stuClass+'</td><td>'+item.stuName+'</td><td>'+item.stuPhonenum+'</td><td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'generalstu.html\'">修改</button><button type="submit" class="btn btn-danger" onclick="deleteStu()">删除</button></td></tr>')
         })
+        console.log(data);
       }
     })
     // $(".delete").parents("tr").first().remove();
   }
   function deleteStu(item){
     $.ajax({
-      url:'/students',
+      url:'/students'+item,
       method:'delete',
-      data:item,
+      contentType: "application/json; charset=utf-8",
       success:function(data){
         if(data.code==200){
           $(".delete").parents("tr").first().remove();
