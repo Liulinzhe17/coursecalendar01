@@ -55,15 +55,10 @@ body{
     background-color:rgb(103,111,107);border-radius: 5px;color:white;top:459px;left:176px;display: block;position: absolute;
 }
 .main_con_upload{
-    background-color:rgb(103,111,107);border-radius: 5px;width:70px;position:absolute;top:475px;right:10px;color:white;
+    background-color:rgb(103,111,107);border-radius: 5px;width:100px;height:45px;position:absolute;top:458px;right:17px;color:white;
 }
 .main_con_tea{
     background-color: rgb(66,71,81);color:rgb(103,111,107);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> cx
 }
 #zl a{
     color:rgb(103,111,107);

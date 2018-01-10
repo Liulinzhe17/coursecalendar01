@@ -13,7 +13,18 @@ $(function () {
             url:"/students/login",
             data:{id:$("#uid").val(),pwd:$("#pwd").val()},
             success:function(data) {
-                if(data==1)window.location.href="main.html";
+                if(data==1){
+                    if(alert($("#uid").val().length)==10){
+                        localStorage.setItem("id",$("#uid").val());
+                        window.location.href="main.html";
+                    }
+                    else if (alert($("#uid").val().length)==6){
+
+                    }
+                    else {
+                        window.location.href="calendar.html";
+                    }
+                }
                 else $('#login_erro').html("登录失败,帐号或密码错误");
             }
         })
