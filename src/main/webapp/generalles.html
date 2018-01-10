@@ -663,29 +663,32 @@
     <!-- bootstrap time picker -->
     <script src="js/ZCY_JS/bootstrap-timepicker.min.js"></script>
     <script>
-    $(document).ready(function() {
-        console.log($(".form").serialize());
-    });
+//    $(document).ready(function() {
+//        console.log($(".form").serialize());
+//    });
 
     function add() {
         var message = {
             courseAcademy: $(".courseAcademy").val(),
             courseAddress: $(".courseAddress").val(),
-            courseId: $(".courseId").val()
-            courseWeek: $(".courseWeek").val()
-            courseTimestart: $(".courseTimestart").val()
-            courseTimeend: $(".courseTimeend").val()
-            courseName: $(".courseName").val()
-            courseWeekend: $(".courseWeekend").val()
+            courseId: $(".courseId").val(),
+            courseWeek: $(".courseWeek").val(),
+            courseTimestart: $(".courseTimestart").val(),
+            courseTimeend: $(".courseTimeend").val(),
+            courseName: $(".courseName").val(),
+            courseWeekend: $(".courseWeekend").val(),
             courseWeekstart: $(".courseWeekstart").val()
         }
+        console.log($(".courseID").val());
         $.ajax({
+                contentType: "application/json; charset=utf-8",
                 type: 'post',
-                url: '/course',
-                data: message,
+                url: '/courses/'+$(".courseID").val(),
+                data: JSON.stringify(message),
                 success: function(data) {
                     if (data.code == "200") {
                         alert('添加成功');
+                        console.log('成功');
                     }
                 }
             }

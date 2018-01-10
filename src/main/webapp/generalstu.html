@@ -336,11 +336,11 @@
                                         <!-- text input -->
                                         <div class="form-group" id="stuUserid">
                                             <label>学号</label>
-                                            <input type="text" class="form-control" placeholder="请输入学号 ...">
+                                            <input type="text" class="form-control stuUserid" placeholder="请输入学号 ...">
                                         </div>
                                         <div class="form-group" id="stuAcademy">
                                             <label>请选择学院</label>
-                                            <select class="form-control">
+                                            <select class="form-control stuAcademy">
                                                 <option>信息学院</option>
                                                 <option>财会学院</option>
                                                 <option>工商管理学院</option>
@@ -350,7 +350,7 @@
                                         </div>
                                         <div class="form-group" id="stuClass">
                                             <label>请选择班级</label>
-                                            <select class="form-control">
+                                            <select class="form-control stuClass"">
                                                 <option>1501班</option>
                                                 <option>1502班</option>
                                                 <option>1503班</option>
@@ -361,12 +361,12 @@
                                         <!-- text input -->
                                         <div class="form-group" id="stuName">
                                             <label>姓名</label>
-                                            <input type="text" class="form-control" placeholder="请输入姓名 ...">
+                                            <input type="text" class="form-control stuName" placeholder="请输入姓名 ...">
                                         </div>
                                         <!-- text input -->
                                         <div class="form-group" id="stuPhonenum">
                                             <label>手机号</label>
-                                            <input type="text" class="form-control" placeholder="请输入手机号 ...">
+                                            <input type="text" class="form-control stuPhonenum" placeholder="请输入手机号 ...">
                                         </div>
                                         <div class="box-footer">
                                             <button type="submit" class="btn btn-primary" onclick="add()">添加</button>
@@ -582,9 +582,9 @@
         <!-- AdminLTE for demo purposes -->
         <script src="js/ZCY_JS/demo.js"></script>
         <script>
-        $(document).ready(function() {
-            console.log($(".form").serialize());
-        });
+//        $(document).ready(function() {
+//            console.log($(".form").serialize());
+//     });
 
         function add() {
             var message = {
@@ -594,13 +594,18 @@
                 stuName: $(".stuName").val(),
                 stuPhonenum: $(".stuPhonenum").val()
             }
+            console.log($(".stuUserid").val());
             $.ajax({
+                    contentType: "application/json; charset=utf-8",
                     type: 'post',
-                    url: '/students/stuUserid',
-                    data: message,
+                    url: '/students/'+$(".stuUserid").val(),
+                    data: JSON.stringify(message),
+                    contentType:"application/json",
+//                    data: message,
                     success: function(data) {
                         if (data.code == "200") {
                             alert('添加成功');
+                            console.log('成功');
                         }
                     }
                 }
