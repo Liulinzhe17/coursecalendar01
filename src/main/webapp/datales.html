@@ -308,7 +308,7 @@
                                             <th>操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="courseMessage">
                                         <tr>
                                             <td>信息学院</td>
                                             <td>软件工程</td>
@@ -319,8 +319,36 @@
                                             <td>1</td>
                                             <td>16</td>
                                             <td>
-                                                <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='../forms/generalles.html'">修改</button>
-                                                <button type="submit" class="btn btn-danger" onclick="deleteLes()">删除</button>
+                                                <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='generalles.html'">修改</button>
+                                                <button type="submit" class="btn btn-danger delete" onclick="deleteLes(\''+item.courseId+'\')">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>信息学院</td>
+                                            <td>企业化平台设计</td>
+                                            <td>周二</td>
+                                            <td>8:05</td>
+                                            <td>9:35</td>
+                                            <td>A223</td>
+                                            <td>1</td>
+                                            <td>16</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='generalles.html'">修改</button>
+                                                <button type="submit" class="btn btn-danger delete" onclick="deleteLes(\''+item.courseId+'\')">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>信息学院</td>
+                                            <td>数据库</td>
+                                            <td>周三</td>
+                                            <td>8:05</td>
+                                            <td>9:35</td>
+                                            <td>A223</td>
+                                            <td>1</td>
+                                            <td>16</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href='generalles.html'">修改</button>
+                                                <button type="submit" class="btn btn-danger delete" onclick="deleteLes(\''+item.courseId+'\')">删除</button>
                                             </td>
                                         </tr>
                                         </tfoot>
@@ -542,13 +570,15 @@
     <script>
     function cheakLes() {
         $.ajax({
-            url: '/course',
-            method: 'post',
-            data: data,
+            url: '/courses',
+            method: 'get',
+            contentType:"application/json",
+            //         data: data,
             success: function(data) {
-                $.each(data, function(item) {
-                    $('.teacherMessage').append('<tr><td>' + item. + '</td><td>软件工程</td><td>周一</td><td>8:05</td><td>9:35</td><td>A223</td><td>1</td><td>16</td><td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'../forms/generalles.html\'">修改</button><button type="submit" class="btn btn-danger" onclick="deleteLes()">删除</button></td></tr>')
+                $.each(data, function(index,item) {
+                    $('.courseMessage').append('<tr><td>' + item.courseAcademy + '</td><td>'+item.courseName+'</td><td>'+item.courseWeek+'</td><td>'+item.courseTimestart+'</td><td>'+item.courseTimeend+'</td><td>'+item.courseAddress+'</td><td>'+item.courseWeekstart+'</td><td>'+item.courseWeekend+'</td><td><button type="submit" class="btn btn-primary" onclick="javaScript:window.location.href=\'generalles.html\'">修改</button><button type="submit" class="btn btn-danger" onclick="deleteLes(\''+item.courseId+'\')">删除</button></td></tr>')
                 })
+                console.log(data);
             }
         })
         // $(".delete").parents("tr").first().remove();
@@ -556,9 +586,10 @@
 
     function deleteLes(item) {
         $.ajax({
-            url: '/course',
+            url: '/courses/'+item,
+            contentType: "application/json; charset=utf-8",
             method: 'delete',
-            data: item,
+
             success: function(data) {
                 if (data.code == 200) {
                     $(".delete").parents("tr").first().remove();

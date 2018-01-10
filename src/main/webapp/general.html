@@ -331,7 +331,7 @@
                                     <form role="form" class="form">
                                         <div class="form-group" id="teacherAcademy">
                                             <label>请选择学院</label>
-                                            <select class="form-control">
+                                            <select class="form-control teacherAcademy">
                                                 <option>信息学院</option>
                                                 <option>财会学院</option>
                                                 <option>工商管理学院</option>
@@ -342,20 +342,20 @@
                                         <!-- text input -->
                                         <div class="form-group" id=”teacherUserid“>
                                             <label>教工号</label>
-                                            <input type="text" class="form-control" placeholder="请输入教工号 ...">
+                                            <input type="text" class="form-control teacherUserid" placeholder="请输入教工号 ...">
                                         </div>
                                         <!-- text input -->
                                         <div class="form-group" id=”teacherName“>
                                             <label>姓名</label>
-                                            <input type="text" class="form-control" placeholder="请输入姓名 ...">
+                                            <input type="text" class="form-control teacherName" placeholder="请输入姓名 ...">
                                         </div>
                                         <!-- text input -->
                                         <div class="form-group" id="teacherPhonenum">
                                             <label>手机号</label>
-                                            <input type="text" class="form-control" placeholder="请输入手机号 ...">
+                                            <input type="text" class="form-control teacherPhonenum" placeholder="请输入手机号 ...">
                                         </div>
                                         <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary" onclick="add()">添加</button>
+                                            <button type="button" class="btn btn-primary" onclick="add()">添加</button>
                                         </div>
                                 </div>
                                 </form>
@@ -569,24 +569,30 @@
     <!-- AdminLTE for demo purposes -->
     <script src="js/ZCY_JS//demo.js"></script>
     <script>
-    $(document).ready(function() {
-        console.log($(".form").serialize()); // FirstName=Bill&LastName=Gates
-    });
+//    $(document).ready(function() {
+//        console.log($(".form").serialize()); // FirstName=Bill&LastName=Gates
+//    });
 
     function add() {
+
         var message = {
             teacherAcademy: $(".teacherAcademy").val(),
             teacherUserid: $(".teacherUserid").val(),
             teacherName: $(".teacherName").val(),
             teacherPhonenum: $(".teacherPhonenum").val()
         }
+        console.log($(".teacherUserid").val());
         $.ajax({
+                contentType: "application/json; charset=utf-8",
                 type: 'post',
-                url: '/teachers/teacherUserid',
-                data: message,
+                url:'/teachers/'+$(".teacherUserid").val(),
+                data: JSON.stringify(message),
+                contentType:"application/json",
                 success: function(data) {
+                    console.log(data)
                     if (data.code == "200") {
                         alert('添加成功');
+                        console.log('成功');
                     }
                 }
             }
