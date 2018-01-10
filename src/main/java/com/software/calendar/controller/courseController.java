@@ -75,14 +75,14 @@ public class courseController {
     }
 
     @RequestMapping(value="/getallcourse",method = RequestMethod.POST)//所有课程
-    public Set<course> getallcourse(String stuserid){
-        student stu = studentRepo.findByStuUserid(stuserid);
+    public Set<course> getallcourse(String stuUserid){
+        student stu = studentRepo.findByStuUserid(stuUserid);
         return stu.getCourses();
     }
     @RequestMapping(value="/stuUserid/weektime",method = RequestMethod.GET)//本周课程
-    public Set<course> getcourses(String stuserid,String weektime){
+    public Set<course> getcourses(String stuUserid,String weektime){
         int we = Integer.parseInt(weektime);
-        student stu = studentRepo.findByStuUserid(stuserid);
+        student stu = studentRepo.findByStuUserid(stuUserid);
         Set<course> courses = stu.getCourses();
         Iterator<course> it = courses.iterator();
         for(int index=0;index<courses.size();index++){
@@ -96,6 +96,11 @@ public class courseController {
         }
         return courses;
     }
+    @RequestMapping(method = RequestMethod.GET)//查询所有课程
+    public List<course> allcourses(){
+        List<course> list = courseRepo.findAll();
+        return list;
+    }
     @RequestMapping(value = "/courseId",method = RequestMethod.GET)//查询单个详情
     public course getcourse(String courseId){
         return courseRepo.findByCourseId(courseId);
@@ -106,8 +111,8 @@ public class courseController {
         courseRepo.saveAndFlush(c);
         return 1;
     }
-    @RequestMapping(value = "/{courseId}",method = RequestMethod.PUT)//更新课程
-    public int updatecourse(@PathVariable("courseId")String courseId,@RequestBody course c){
+    @RequestMapping(method = RequestMethod.PUT)//更新课程
+    public int updatecourse(@RequestBody course c){
         courseRepo.saveAndFlush(c);
         return 1;
     }
