@@ -1,5 +1,5 @@
 ---
 applications:
-  - name: calendar
+  - name: calendar1
     # buildpack: java_buildpack
     path: target/calendar-0.0.1-SNAPSHOT.jar
