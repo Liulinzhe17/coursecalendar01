@@ -12,7 +12,8 @@ deploy:
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: 1015320177@qq.com
-  password: 19980107Zz!
+  password:
+    secure: YistiyW1Umk7+lw+HhlgwvbcWUYqQHtBLu1m3IurQnQTasGGjITuhnLCMtHX4g8qX7DmfQIAGO+15MLJc456/s6k+GdIvlP7jTWwn7rFabtiMMNYIcQ/cdn0oDJn7FW3nYNS/Mrcf/Jc5AXinW8zlOwC5OaV/pghoAL2R78yVESxsIDiptG0bc5XvFy0n2ewPahizsEjGFpFU5RBO3aKr7oYpjDDztOpzEXdVqBCiFGz0AGmaC8TDNhboN2Q2NLcHu7kHsYCshN3Nw0+BUZif4/X8xnMT90tik2BeT+Ayuyjtls26bAUPzeocL9YXE+kEUHPjqCsUpEU3UfZbofcVMMTpBPAJXDcl0DvmDTADhu5aUXA59fz/eIhvvkIltRScI8wHhk8d8salCUtNQvpk3AJMbMHJJagASarX7tb9F/5W/2Hv43GbWoAc91XyurtsKiAGxi+wUhU9Pk+VEVYl8tR3IWIUnQvqdnDTT+igLQxfsamdxNmo2dRoSsa1Bg4/b919nkO23G3foZ+1C/LPq1Pn71WMmpHjhA1m3wk9/bcSSAtGUNKIUHmP1XkVVsBkq6bopnlUPaOrhFeI9t/rwGGcbCBNjMLAzile4ai4RxdH3robRNn91xD9270sDEMiJI7e305JQdenWDdDnQzjSNM3CkzjXKoCvu1BJDzkiQ=
   organization: kylin
   space: development
   on:
