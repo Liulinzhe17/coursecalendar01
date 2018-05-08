@@ -1,17 +1,19 @@
 language: java
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
+sudo: true
 notifications:
   email: false
-
-script: mvn package
-
+before_install:
+- chmod +x ./mvnw
+script:
+- "./mvnw test -B"
 deploy:
-  provider: releases
-  api_key: 
-    secure: e394ec443474b8e2fcf1b761a4a10451146b92f8
-  file: target
-  skip_cleanup: true
+  provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: 1015320177@qq.com
+  password:
+  organization: Liulinzhe17
+  space: development
   on:
-    tags: true
+    repo: Liulinzhe17/coursecalendar01

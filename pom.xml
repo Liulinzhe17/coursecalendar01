@@ -55,6 +55,17 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/webapp</directory>
+				<targetPath>META-INF/resources</targetPath>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+		</resources>
+
 	</build>
 
 
