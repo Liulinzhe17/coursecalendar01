@@ -13,7 +13,7 @@ deploy:
   api: https://api.run.pivotal.io
   username: 1015320177@qq.com
   password: 19980107Zz!
-  organization: Liulinzhe17
+  organization: kylin
   space: development
   on:
     repo: Liulinzhe17/coursecalendar01
