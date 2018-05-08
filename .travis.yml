@@ -13,6 +13,7 @@ deploy:
   api: https://api.run.pivotal.io
   username: 1015320177@qq.com
   password:
+    secure: AcwRxQmcY/3g/zYCV2lv3J/pxC5iisEz3qhPKVwW1qXRTjLBsAikHWUzt/Ia+HHBZimx4Bq6CuMbhdHsYxWI81okePiDGVR/X7U922sVquFJEekFYEoAxG+XLKVJfGMity78zRdGmVhnPOIqpQTeYjrp16o3HcS4/XYu6FrO47KVOn+XVVQNvt8qL5kzuuLjY7QVSEVwL409oQRWrKe9tAABxD29/NfKloOg2J58DvLhDkmP7MG6lYE6k8OEwhHsDmO9C9DeBqqQCGDAQkLSlX0KNJ1pOkrUhL95TKlwnyhTu7pYa5YtfKrm0jeNx9hQaqte9eGdoMdns7xRItEHzOcotiHHuWvML7RpyAMr3yHGMpocwRGPn6Bcj4rGiTXvHREEVeusKFv5TRQAFOjqE8ZM/WzJxQp8SNk/xrGZUx6/bs/Vr78kIAkVLp9X2PDQWGcTr9qH2nXGzjBVN/zyycySrvI37yPvH3o4JHpnD5QLRf24eQo41904mrDt+TTfAFQ++1SviCMtExtojYIgL7Ixdob1fIcWOxhCmYEK0GYywEGhYo76r62bCsHoMn6Fu9MANPd+TfWZjMmLVeGJqitWqNdxEOoqc2NrI4sXbHwkS4+Tf+Ja0TVW1SGPToJuRzc6ZS7kEDhc+I6FSpiiHWgV6R7O+4c9Vw2Y3dETQGs=
   organization: Liulinzhe17
   space: development
   on:
