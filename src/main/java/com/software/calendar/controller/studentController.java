@@ -111,7 +111,7 @@ public class studentController {
     @RequestMapping(value = "/{stuUserid}/status",method = RequestMethod.GET)
     @ResponseBody
     public Result isFree(@PathVariable("stuUserid")String stuUserid,@RequestParam int weekday ,int start ,int end ,int week){
-        System.out.println("******判断学生的空闲状态******");
+//        System.out.println("******判断学生的空闲状态******");
 
         int status=1;//status=1表示有空，status=0表示没空。
         student stu=studentRepo.findByStuUserid(stuUserid);
