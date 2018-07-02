@@ -40,7 +40,7 @@ $.ajax({
 
         for(var index=0;index<len;index++){
             var add="<div class=\"main_con_tea_div\">"+
-                "<div class=\"main_con_tea_div_img\"><img src=\"qweqwe\" alt=\"未显示图片\"></div>"+
+                "<div class=\"main_con_tea_div_img\"></div>"+
                 "<p>教师姓名:<br>"+data[index].teacherName+"</p>"+
                 "<p>学院:<br>"+data[index].teacherAcademy+"</p>"+
                 "<p>职称:<br>"+data[index].teacherTitle+"</p>"+
